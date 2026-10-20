@@ -1,7 +1,7 @@
 .globl factorial
 
 .data
-n: .word 8
+n: .word 9
 
 .text
 # Don't worry about understanding the code in main
@@ -27,7 +27,23 @@ main:
 # The return value should be stored in a0
 factorial:
     # YOUR CODE HERE
-
+    li t0 1 # i = 1
+    li t1 1 # fact = 1
+Loop:
+    bgt t0 a0 AfterLoop
+    mul t1 t1 t0
+    addi t0 t0 1
+    j Loop
+AfterLoop:
+    mv a0 t1
     # This is how you return from a function. You'll learn more about this later.
     # This should be the last line in your program.
     jr ra
+
+#fact = 1, i = 1
+#Loop:
+#   if (i > n) goto AfterLoop
+#   fact *= i
+#   i += 1
+#   goto Loop
+#AfterLoop:
