@@ -6,7 +6,9 @@
 # The return value should be stored in a0
 f:
     # Your code here
-
+    slli t0 a0 2
+    add t0 a1 t0
+    lw a0 12(t0)
     # This is how you return from a function. You'll learn more about this later.
     # This should be the last line in your program.
     jr ra
