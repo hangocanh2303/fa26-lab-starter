@@ -50,6 +50,8 @@ next_test:
 pow:
     # BEGIN PROLOGUE
     # FIXME: Need to save the callee saved register(s)
+    addi sp, sp, -4
+    sw s0, 0(sp)
     # END PROLOGUE
     li s0, 1
 pow_loop:
@@ -61,6 +63,8 @@ pow_end:
     mv a0, s0
     # BEGIN EPILOGUE
     # FIXME: Need to restore the callee saved register(s)
+    lw s0, 0(sp)
+    addi sp, sp, 4
     # END EPILOGUE
     jr ra
 
